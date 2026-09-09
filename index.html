@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Web oficial del C.D. Iliplense, club de fútbol de Niebla (Huelva). Resultados, clasificación, plantilla, noticias y cómo hacerte socio.">
+  <meta name="theme-color" content="#0B2A5B">
+  <title>C.D. Iliplense · Web oficial</title>
+
+  <link rel="icon" href="assets/img/escudo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Configuración de Tailwind (paleta del club y fuentes)
+    if (window.tailwind) tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            club: {
+              50:  '#EEF3FB',
+              100: '#D6E1F5',
+              200: '#AEC3EB',
+              300: '#7EA0DE',
+              400: '#4F7BD0',
+              500: '#1E5BC6',
+              600: '#17489E',
+              700: '#113877',
+              800: '#0B2A5B',
+              900: '#071B3B'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            display: ['Oswald', 'Impact', 'ui-sans-serif', 'sans-serif']
+          }
+        }
+      }
+    };
+    // Aplica el modo oscuro guardado antes de pintar para evitar parpadeo
+    try {
+      const t = localStorage.getItem('theme');
+      if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      }
+    } catch (e) {}
+  </script>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="bg-white text-slate-800 dark:bg-slate-950 dark:text-slate-100 font-sans antialiased">
+
+  <a href="#inicio" class="skip-link">Saltar al contenido</a>
+
+  <!-- ================= CABECERA / NAVEGACIÓN ================= -->
+  <header class="sticky top-0 z-40 bg-club-800/95 backdrop-blur text-white shadow-lg" role="banner">
+    <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-label="Navegación principal">
+      <div class="flex h-16 items-center justify-between gap-4">
+        <a href="#inicio" class="flex items-center gap-3 font-display text-xl tracking-wide uppercase focus-ring rounded">
+          <img src="assets/img/escudo.svg" alt="" width="40" height="60" class="h-10 w-auto drop-shadow" data-club-escudo>
+          <span data-club-nombre>C.D. Iliplense</span>
+        </a>
+
+        <ul class="hidden md:flex items-center gap-1 text-sm font-medium" id="nav-desktop">
+          <li><a href="#inicio" class="nav-link">Inicio</a></li>
+          <li><a href="#clasificacion" class="nav-link">Clasificación</a></li>
+          <li><a href="#plantilla" class="nav-link">Plantilla</a></li>
+          <li><a href="#noticias" class="nav-link">Noticias</a></li>
+          <li><a href="#contacto" class="nav-link">Contacto</a></li>
+        </ul>
+
+        <div class="flex items-center gap-2">
+          <a href="#contacto" class="hidden sm:inline-flex btn-accent text-sm">Hazte socio</a>
+          <button type="button" id="theme-toggle" class="icon-btn" aria-label="Cambiar modo oscuro" aria-pressed="false">
+            <svg class="h-5 w-5 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+            <svg class="h-5 w-5 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+          </button>
+          <button type="button" id="menu-toggle" class="icon-btn md:hidden" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-mobile">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <ul id="nav-mobile" class="md:hidden hidden pb-4 space-y-1 text-base font-medium" hidden>
+        <li><a href="#inicio" class="nav-link block">Inicio</a></li>
+        <li><a href="#clasificacion" class="nav-link block">Clasificación</a></li>
+        <li><a href="#plantilla" class="nav-link block">Plantilla</a></li>
+        <li><a href="#noticias" class="nav-link block">Noticias</a></li>
+        <li><a href="#contacto" class="nav-link block">Contacto</a></li>
+        <li class="pt-2"><a href="#contacto" class="btn-accent w-full justify-center">Hazte socio</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!-- ================= 1. INICIO / HERO ================= -->
+    <section id="inicio" class="hero relative overflow-hidden bg-club-800 text-white" aria-labelledby="hero-title">
+      <div class="hero-stripes" aria-hidden="true"></div>
+      <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+        <div class="grid gap-12 lg:grid-cols-2 lg:items-center">
+
+          <div class="text-center lg:text-left">
+            <img src="assets/img/escudo.svg" alt="Escudo del C.D. Iliplense" width="160" height="240" class="mx-auto lg:mx-0 h-40 md:h-52 w-auto drop-shadow-2xl animate-float" data-club-escudo>
+            <p class="mt-6 text-club-200 font-semibold uppercase tracking-[0.25em] text-xs sm:text-sm" data-club-localidad>Niebla (Huelva)</p>
+            <h1 id="hero-title" class="mt-2 font-display text-5xl sm:text-6xl md:text-7xl uppercase leading-none tracking-wide" data-club-nombre>C.D. Iliplense</h1>
+            <p class="mt-4 text-lg text-club-100 max-w-xl mx-auto lg:mx-0" data-club-lema>Orgullo de Niebla</p>
+            <p class="mt-2 text-sm text-club-200" data-club-competicion></p>
+            <div class="mt-8 flex flex-wrap justify-center lg:justify-start gap-3">
+              <a href="#proximo-partido" class="btn-accent">Próximo partido</a>
+              <a href="#plantilla" class="btn-outline">Ver plantilla</a>
+            </div>
+          </div>
+
+          <div class="space-y-6">
+            <!-- Último resultado -->
+            <article class="card-glass p-6" aria-labelledby="ultimo-title">
+              <h2 id="ultimo-title" class="eyebrow text-club-200">Último resultado</h2>
+              <div id="ultimo-resultado" class="mt-3" aria-live="polite"></div>
+            </article>
+
+            <!-- Próximo partido -->
+            <article id="proximo-partido" class="card-glass p-6 scroll-mt-24" aria-labelledby="proximo-title">
+              <h2 id="proximo-title" class="eyebrow text-club-200">Próximo encuentro</h2>
+              <div id="proximo-encuentro" class="mt-3"></div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 2. CLASIFICACIÓN Y RESULTADOS ================= -->
+    <section id="clasificacion" class="section" aria-labelledby="clasificacion-title">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <header class="section-header">
+          <p class="eyebrow">Temporada <span data-club-temporada></span></p>
+          <h2 id="clasificacion-title" class="section-title">Clasificación y resultados</h2>
+          <p class="section-lead" data-club-competicion></p>
+        </header>
+
+        <div class="grid gap-8 lg:grid-cols-3">
+          <!-- Tabla -->
+          <div class="lg:col-span-2">
+            <div class="table-scroll" role="region" aria-label="Tabla de clasificación, desplazable horizontalmente" tabindex="0">
+              <table class="min-w-full text-sm" id="tabla-clasificacion">
+                <caption class="sr-only">Clasificación de la liga</caption>
+                <thead>
+                  <tr>
+                    <th scope="col" class="th text-center w-10">#</th>
+                    <th scope="col" class="th text-left">Equipo</th>
+                    <th scope="col" class="th text-center" abbr="Puntos">PTS</th>
+                    <th scope="col" class="th text-center" abbr="Partidos jugados">PJ</th>
+                    <th scope="col" class="th text-center" abbr="Ganados">G</th>
+                    <th scope="col" class="th text-center" abbr="Empatados">E</th>
+                    <th scope="col" class="th text-center" abbr="Perdidos">P</th>
+                    <th scope="col" class="th text-center" abbr="Goles a favor">GF</th>
+                    <th scope="col" class="th text-center" abbr="Goles en contra">GC</th>
+                    <th scope="col" class="th text-center" abbr="Diferencia de goles">DIF</th>
+                    <th scope="col" class="th text-center">Forma</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+            <p class="mt-3 text-xs text-slate-500 dark:text-slate-400 md:hidden">Desliza la tabla lateralmente para ver todas las columnas.</p>
+          </div>
+
+          <!-- Resultados y calendario -->
+          <div class="space-y-8">
+            <div>
+              <h3 class="subsection-title">Últimos resultados</h3>
+              <ul id="lista-resultados" class="mt-4 space-y-3"></ul>
+            </div>
+            <div>
+              <h3 class="subsection-title">Calendario</h3>
+              <ul id="lista-calendario" class="mt-4 space-y-3"></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 3. PLANTILLA ================= -->
+    <section id="plantilla" class="section bg-club-50 dark:bg-slate-900" aria-labelledby="plantilla-title">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <header class="section-header">
+          <p class="eyebrow">Primer equipo</p>
+          <h2 id="plantilla-title" class="section-title">Plantilla</h2>
+          <p class="section-lead">Filtra por posición o busca un jugador por nombre o dorsal.</p>
+        </header>
+
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
+          <div class="flex flex-wrap gap-2" role="group" aria-label="Filtrar por posición" id="filtros-posicion">
+            <button type="button" class="chip" data-pos="ALL" aria-pressed="true">Todos</button>
+            <button type="button" class="chip" data-pos="POR" aria-pressed="false">Porteros</button>
+            <button type="button" class="chip" data-pos="DEF" aria-pressed="false">Defensas</button>
+            <button type="button" class="chip" data-pos="CEN" aria-pressed="false">Centrocampistas</button>
+            <button type="button" class="chip" data-pos="DEL" aria-pressed="false">Delanteros</button>
+          </div>
+          <label class="relative block md:w-72">
+            <span class="sr-only">Buscar jugador</span>
+            <svg class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 115 11a6 6 0 0112 0z"/></svg>
+            <input type="search" id="buscar-jugador" class="input pl-9" placeholder="Buscar jugador o dorsal…" autocomplete="off">
+          </label>
+        </div>
+
+        <p id="plantilla-contador" class="sr-only" aria-live="polite"></p>
+        <div id="plantilla-grid" class="space-y-12"></div>
+
+        <div class="mt-16">
+          <h3 class="subsection-title">Cuerpo técnico</h3>
+          <ul id="cuerpo-tecnico" class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 4. NOTICIAS Y GALERÍA ================= -->
+    <section id="noticias" class="section" aria-labelledby="noticias-title">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <header class="section-header">
+          <p class="eyebrow">Actualidad</p>
+          <h2 id="noticias-title" class="section-title">Noticias y crónicas</h2>
+          <p class="section-lead">Crónicas de los partidos, vida del club y eventos del pueblo.</p>
+        </header>
+
+        <div class="flex flex-wrap gap-2 mb-8" role="group" aria-label="Filtrar noticias" id="filtros-noticias">
+          <button type="button" class="chip" data-tipo="ALL" aria-pressed="true">Todas</button>
+          <button type="button" class="chip" data-tipo="cronica" aria-pressed="false">Crónicas</button>
+          <button type="button" class="chip" data-tipo="club" aria-pressed="false">Club</button>
+          <button type="button" class="chip" data-tipo="pueblo" aria-pressed="false">Pueblo</button>
+        </div>
+
+        <div id="noticias-grid" class="grid gap-6 md:grid-cols-2 lg:grid-cols-3"></div>
+
+        <div id="galeria" class="mt-20 scroll-mt-24">
+          <h3 class="subsection-title">Galería de las jornadas</h3>
+          <p class="text-slate-600 dark:text-slate-400 mt-1">Pulsa una foto para ampliarla.</p>
+          <div id="galeria-grid" class="mt-6 grid gap-3 grid-cols-2 md:grid-cols-3 lg:grid-cols-4"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 5. CONTACTO Y PATROCINADORES ================= -->
+    <section id="contacto" class="section bg-club-50 dark:bg-slate-900" aria-labelledby="contacto-title">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <header class="section-header">
+          <p class="eyebrow">Únete al club</p>
+          <h2 id="contacto-title" class="section-title">Contacto</h2>
+          <p class="section-lead">Hazte socio, inscríbete como jugador o escríbenos para cualquier consulta.</p>
+        </header>
+
+        <div class="grid gap-10 lg:grid-cols-2">
+          <!-- Formulario -->
+          <form id="form-contacto" class="card p-6 sm:p-8 space-y-5" novalidate aria-describedby="form-info">
+            <p id="form-info" class="text-sm text-slate-600 dark:text-slate-400">Los campos marcados con <span class="text-red-600" aria-hidden="true">*</span> son obligatorios.</p>
+
+            <fieldset>
+              <legend class="label">Quiero… <span class="text-red-600" aria-hidden="true">*</span></legend>
+              <div class="mt-2 grid grid-cols-1 sm:grid-cols-3 gap-2">
+                <label class="radio-card"><input type="radio" name="tipo" value="socio" checked> <span>Hacerme socio</span></label>
+                <label class="radio-card"><input type="radio" name="tipo" value="jugador"> <span>Jugar en el club</span></label>
+                <label class="radio-card"><input type="radio" name="tipo" value="consulta"> <span>Otra consulta</span></label>
+              </div>
+            </fieldset>
+
+            <div class="grid gap-5 sm:grid-cols-2">
+              <div>
+                <label for="nombre" class="label">Nombre y apellidos <span class="text-red-600" aria-hidden="true">*</span></label>
+                <input id="nombre" name="nombre" type="text" class="input" required autocomplete="name">
+                <p class="error" id="nombre-error" role="alert"></p>
+              </div>
+              <div>
+                <label for="telefono" class="label">Teléfono</label>
+                <input id="telefono" name="telefono" type="tel" class="input" autocomplete="tel" inputmode="tel">
+              </div>
+            </div>
+
+            <div>
+              <label for="email" class="label">Correo electrónico <span class="text-red-600" aria-hidden="true">*</span></label>
+              <input id="email" name="email" type="email" class="input" required autocomplete="email">
+              <p class="error" id="email-error" role="alert"></p>
+            </div>
+
+            <div id="campo-posicion" class="hidden">
+              <label for="posicion" class="label">Posición preferida</label>
+              <select id="posicion" name="posicion" class="input">
+                <option value="">Selecciona una opción</option>
+                <option value="POR">Portero</option>
+                <option value="DEF">Defensa</option>
+                <option value="CEN">Centrocampista</option>
+                <option value="DEL">Delantero</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="mensaje" class="label">Mensaje</label>
+              <textarea id="mensaje" name="mensaje" rows="4" class="input" placeholder="Cuéntanos lo que necesites…"></textarea>
+            </div>
+
+            <label class="flex items-start gap-3 text-sm">
+              <input type="checkbox" id="privacidad" name="privacidad" class="mt-1 h-4 w-4 rounded border-slate-300 text-club-600 focus:ring-club-500" required>
+              <span>He leído y acepto la política de privacidad del club. <span class="text-red-600" aria-hidden="true">*</span></span>
+            </label>
+            <p class="error" id="privacidad-error" role="alert"></p>
+
+            <button type="submit" class="btn-primary w-full sm:w-auto">Enviar solicitud</button>
+            <p id="form-estado" class="text-sm font-medium" aria-live="polite"></p>
+          </form>
+
+          <!-- Mapa e info -->
+          <div class="space-y-6">
+            <div class="card overflow-hidden">
+              <iframe id="mapa" title="Ubicación del campo de fútbol" class="w-full h-72 border-0" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen src="about:blank"></iframe>
+              <div class="p-6">
+                <h3 class="font-display text-2xl uppercase tracking-wide" data-campo-nombre></h3>
+                <p class="mt-1 text-slate-600 dark:text-slate-400" data-campo-direccion></p>
+                <a id="mapa-link" href="#" target="_blank" rel="noopener" class="mt-3 inline-flex text-club-600 dark:text-club-300 font-semibold hover:underline focus-ring rounded">Cómo llegar →</a>
+              </div>
+            </div>
+
+            <div class="card p-6">
+              <h3 class="font-display text-2xl uppercase tracking-wide">Datos de contacto</h3>
+              <ul class="mt-4 space-y-3 text-slate-700 dark:text-slate-300">
+                <li class="flex items-center gap-3">
+                  <svg class="h-5 w-5 text-club-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                  <a data-contacto-email href="#" class="hover:underline focus-ring rounded"></a>
+                </li>
+                <li class="flex items-center gap-3">
+                  <svg class="h-5 w-5 text-club-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                  <a data-contacto-telefono href="#" class="hover:underline focus-ring rounded"></a>
+                </li>
+              </ul>
+              <div class="mt-5 flex gap-3" id="redes-sociales" aria-label="Redes sociales"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Patrocinadores -->
+        <div id="patrocinadores" class="mt-20 scroll-mt-24">
+          <header class="text-center mb-8">
+            <p class="eyebrow">Gracias por hacerlo posible</p>
+            <h3 class="section-title">Patrocinadores</h3>
+            <p class="section-lead mx-auto">Comercios y empresas de Niebla que apoyan al club.</p>
+          </header>
+          <ul id="patrocinadores-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4"></ul>
+          <p class="mt-8 text-center text-sm text-slate-600 dark:text-slate-400">¿Tienes un negocio y quieres patrocinar al equipo? <a href="#form-contacto" class="text-club-600 dark:text-club-300 font-semibold hover:underline">Escríbenos</a>.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= PIE ================= -->
+  <footer class="bg-club-900 text-club-100" role="contentinfo">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 grid gap-8 md:grid-cols-3">
+      <div>
+        <div class="flex items-center gap-3">
+          <img src="assets/img/escudo.svg" alt="" width="40" height="60" class="h-12 w-auto" data-club-escudo>
+          <div>
+            <p class="font-display text-xl uppercase tracking-wide text-white" data-club-nombre></p>
+            <p class="text-sm" data-club-localidad></p>
+          </div>
+        </div>
+        <p class="mt-4 text-sm text-club-200">Fundado en <span data-club-fundacion></span>. Club deportivo sin ánimo de lucro.</p>
+      </div>
+      <nav aria-label="Enlaces del pie">
+        <p class="font-semibold text-white">Secciones</p>
+        <ul class="mt-3 space-y-2 text-sm">
+          <li><a href="#clasificacion" class="hover:text-white hover:underline">Clasificación</a></li>
+          <li><a href="#plantilla" class="hover:text-white hover:underline">Plantilla</a></li>
+          <li><a href="#noticias" class="hover:text-white hover:underline">Noticias</a></li>
+          <li><a href="#galeria" class="hover:text-white hover:underline">Galería</a></li>
+          <li><a href="#patrocinadores" class="hover:text-white hover:underline">Patrocinadores</a></li>
+        </ul>
+      </nav>
+      <div>
+        <p class="font-semibold text-white">Contacto</p>
+        <ul class="mt-3 space-y-2 text-sm">
+          <li data-campo-nombre></li>
+          <li><a data-contacto-email href="#" class="hover:text-white hover:underline"></a></li>
+          <li><a data-contacto-telefono href="#" class="hover:text-white hover:underline"></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-club-700">
+      <p class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4 text-xs text-club-300 text-center">© <span id="anio"></span> <span data-club-nombre></span>. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Lightbox de la galería -->
+  <dialog id="lightbox" class="lightbox" aria-label="Foto ampliada">
+    <button type="button" id="lightbox-close" class="lightbox-close" aria-label="Cerrar">&times;</button>
+    <figure class="m-0">
+      <div id="lightbox-media" class="lightbox-media"></div>
+      <figcaption id="lightbox-caption" class="text-center text-sm text-white/80 mt-3"></figcaption>
+    </figure>
+  </dialog>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

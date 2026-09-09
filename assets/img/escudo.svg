@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 340" role="img" aria-labelledby="t">
+  <title id="t">Escudo C.D. Iliplense (placeholder)</title>
+  <!-- corona -->
+  <path d="M40 58 L60 22 L85 46 L110 12 L135 46 L160 22 L180 58 Z" fill="#E8B923" stroke="#8a6a0e" stroke-width="3"/>
+  <circle cx="60" cy="24" r="5" fill="#d21f2b"/><circle cx="110" cy="14" r="5" fill="#d21f2b"/><circle cx="160" cy="24" r="5" fill="#d21f2b"/>
+  <!-- banda roja -->
+  <rect x="34" y="58" width="152" height="34" rx="6" fill="#d21f2b" stroke="#0B2A5B" stroke-width="3"/>
+  <!-- cuerpo escudo -->
+  <path d="M22 92 H198 V210 Q198 300 110 330 Q22 300 22 210 Z" fill="#ffffff" stroke="#0B2A5B" stroke-width="5"/>
+  <!-- cuarteles -->
+  <rect x="34" y="104" width="46" height="52" fill="#ffffff" stroke="#0B2A5B" stroke-width="3"/>
+  <rect x="87" y="104" width="46" height="52" fill="#ffffff" stroke="#0B2A5B" stroke-width="3"/>
+  <rect x="140" y="104" width="46" height="52" fill="#ffffff" stroke="#0B2A5B" stroke-width="3"/>
+  <circle cx="57" cy="122" r="12" fill="#2e8b3d"/><rect x="54" y="130" width="6" height="18" fill="#7a4a1e"/>
+  <rect x="98" y="118" width="24" height="30" fill="#b5742b"/><rect x="98" y="110" width="6" height="8" fill="#b5742b"/><rect x="107" y="110" width="6" height="8" fill="#b5742b"/><rect x="116" y="110" width="6" height="8" fill="#b5742b"/>
+  <path d="M152 148 l8 -24 l6 10 l8 -14 l4 28 Z" fill="#c9a23a"/>
+  <!-- nombre -->
+  <rect x="34" y="166" width="152" height="24" fill="#0B2A5B"/>
+  <text x="110" y="184" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="15" fill="#fff" letter-spacing="1">C.D. ILIPLENSE</text>
+  <!-- franjas -->
+  <clipPath id="c"><path d="M22 196 H198 V210 Q198 300 110 330 Q22 300 22 210 Z"/></clipPath>
+  <g clip-path="url(#c)">
+    <rect x="22" y="196" width="176" height="140" fill="#fff"/>
+    <rect x="44" y="196" width="22" height="140" fill="#0B2A5B"/>
+    <rect x="88" y="196" width="22" height="140" fill="#0B2A5B"/>
+    <rect x="132" y="196" width="22" height="140" fill="#0B2A5B"/>
+    <rect x="176" y="196" width="22" height="140" fill="#0B2A5B"/>
+  </g>
+  <!-- balón -->
+  <circle cx="110" cy="250" r="30" fill="#fff" stroke="#0B2A5B" stroke-width="4"/>
+  <polygon points="110,236 121,244 117,258 103,258 99,244" fill="#0B2A5B"/>
+  <path d="M110 236 V222 M121 244 L136 240 M117 258 L126 270 M103 258 L94 270 M99 244 L84 240" stroke="#0B2A5B" stroke-width="3" fill="none"/>
+</svg>
